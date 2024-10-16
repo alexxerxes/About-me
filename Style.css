@@ -1,0 +1,244 @@
+body {
+            font-family: 'Arial', sans-serif; /* تغيير الخط إلى Arial */
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 100%;
+            margin: auto;
+            padding: 0px;
+            
+        }
+        .box {
+            padding: 0px;
+            margin-bottom: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+        border: 1px solid rgba(0, 0, 0, 0.1); /* حدود ناعمة للجدول */
+        
+        background-color: #f0f0f0;
+            width: 100%;
+            border-collapse: collapse;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            overflow: hidden; 
+            
+    border-radius: 8px;
+        }
+        th, td {
+            padding: 10px 12px;
+            text-align: right;
+            font-size: 16px;
+            border-bottom: 1px solid #e0e0e0;
+            border-right: 1px solid rgba(224, 224, 224, 0.5);
+        }
+        .box:nth-child(1) h2 {
+    color:#4caf50;
+}
+        .box:nth-child(1) th {
+    background-color: #4caf50; /* أخضر فاتح */
+}
+
+/* سلة الطلبات */
+.box:nth-child(2) th {
+    background-color: #2196f3; /* أزرق سماوي */
+}
+        th {
+            background-color: #2196f3;
+            color: white;
+            font-weight: 500;
+            font-size: 18px;
+        }
+        tr:hover {
+            background-color: #e8eaf6;
+        }
+        
+        .order-button {
+    background: linear-gradient(45deg, #4caf50, #66bb6a); /* تدرج أخضر */
+    /* أو */
+    background: linear-gradient(45deg, #2196f3, #64b5f6); /* تدرج أزرق سماوي */
+
+            
+            color: white;
+            border: none;
+            padding: 8px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 14px;
+        }
+        .order-button:hover {
+            background-color: #3700b3;
+        }
+        td:last-child, th:last-child {
+            border-right: none;
+        }
+        #totalRow td {
+            font-weight: bold;
+            background-color: #f0f0f0;
+            
+        }
+
+        h2 {
+        color: #2196f3; 
+        padding: 10px;
+    font-size: 24px; /* حجم مناسب للعناوين */
+    font-weight: 600; /* استخدام وزن متوسط لإبراز العنوان */
+    margin-bottom: 15px; /* إضافة مسافة سفلية للعناوين */
+    text-align: right; /* الحفاظ على محاذاة النص من اليمين */
+    border-bottom: 2px solid #4caf50; /* خط أسفل العنوان لإبرازه */
+    padding-bottom: 10px; /* مسافة سفلية داخلية */
+}
+
+        @media (max-width: 768px) {
+            th, td {
+                font-size: 14px;
+                padding: 8px 10px;
+            }
+        }
+        
+        .order-button-red {
+    background: linear-gradient(45deg, #f44336, #e57373); /* تدرج أحمر */
+    color: white;
+    border: none;
+    padding: 5px 7px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    position: relative;
+    overflow: hidden; /* لتطبيق تأثير الموجات إذا كنت تستخدمه */
+}
+
+
+        .orderModal {
+    display: none; /* مخفي بشكل افتراضي */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff; /* لون الخلفية */
+    border-radius: 8px; /* حواف ناعمة */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* ظل خفيف */
+    padding: 20px; /* حشو داخلي */
+    z-index: 1000; /* فوق العناصر الأخرى */
+    width: 300px; /* عرض محدد */
+    max-width: 90%; /* عرض أقصى للشاشات الصغيرة */
+}
+
+.orderModal h3 {
+    color: #4caf50; /* لون العنوان */
+    margin-bottom: 15px; /* مسافة سفلية */
+    text-align: center; /* محاذاة المركز */
+}
+
+.orderModal p {
+    color: #555; /* لون نص المعلومات */
+    margin-bottom: 10px; /* مسافة سفلية */
+}
+
+.orderModal label {
+    font-weight: 500; /* وزن خط واضح */
+    margin-bottom: 5px; /* مسافة سفلية */
+    display: block; /* يجعل التسمية تأخذ سطرًا كاملًا */
+}
+
+.orderModal input[type="number"] {
+    width: calc(100% - 10px); /* عرض كامل مع حافة */
+    padding: 8px; /* حشو داخلي */
+    border: 1px solid #ccc; /* حدود خفيفة */
+    border-radius: 4px; /* حواف ناعمة */
+    margin-bottom: 15px; /* مسافة سفلية */
+}
+
+.orderModal button {
+    background-color: #4caf50; /* لون زر الإضافة */
+    color: white; /* لون نص الزر */
+    border: none; /* إزالة الحدود */
+    padding: 10px 15px; /* حشو داخلي */
+    border-radius: 5px; /* حواف ناعمة */
+    cursor: pointer; /* شكل المؤشر */
+    transition: background-color 0.3s, transform 0.2s; /* تأثيرات انتقال */
+    width: 48%; /* عرض الزر */
+}
+
+.orderModal button:hover {
+    background-color: #66bb6a; /* لون زر الإضافة عند المرور */
+    transform: translateY(-2px); /* تحريك خفيف لأعلى عند المرور */
+}
+
+.orderModal button:last-child {
+    background-color: #f44336; /* لون زر الإغلاق */
+}
+
+.orderModal button:last-child:hover {
+    background-color: #e57373; /* لون زر الإغلاق عند المرور */
+}.search-container {
+    display: flex; /* يجعل العناصر داخل الحاوية تتجاور */
+    align-items: center; /* محاذاة عمودية للمحتوى */
+    margin-bottom: 20px; /* مسافة سفلية */
+    max-width: 400px; /* عرض أقصى لخانة البحث */
+    margin: auto; /* مركز الخانة */
+}
+
+.search-container input[type="text"] {
+    flex: 1; /* يجعل خانة البحث تأخذ كل المساحة المتاحة */
+    padding: 10px 15px; /* حشو داخلي */
+    border: 1px solid #ccc; /* حدود خفيفة */
+    border-radius: 4px; /* حواف ناعمة */
+    font-size: 16px; /* حجم خط النص */
+    transition: border-color 0.3s; /* تأثيرات انتقالية */
+}
+
+.search-container input[type="text"]:focus {
+    border-color: #4caf50; /* تغيير لون الحدود عند التركيز */
+    outline: none; /* إزالة حدود التركيز الافتراضية */
+}
+
+.search-button {
+    background-color: #4caf50; /* لون زر البحث */
+    color: white; /* لون نص الزر */
+    border: none; /* إزالة الحدود */
+    padding: 10px 15px; /* حشو داخلي */
+    border-radius: 4px; /* حواف ناعمة */
+    cursor: pointer; /* شكل المؤشر */
+    margin-left: 10px; /* مسافة بين الزر وخانة البحث */
+    transition: background-color 0.3s; /* تأثيرات انتقالية */
+}
+
+.search-button:hover {
+    background-color: #66bb6a; /* لون الزر عند المرور */
+}
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        .overlay.show {
+            display: block;
+        }
+        
+        #cancelAllOrdersBtn {
+    border-radius: 5px;
+    background-color: #f44336; /* أحمر */
+    color: white;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+
+.twoButton{
+    display: flex; 
+    justify-content: space-between;
+}
+          
