@@ -1,29 +1,89 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Table from Google Sheets</title>
+     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" />
+    
+    <style>
+       
+       
+    </style>
 </head>
-<style>
-div {
-  background-color: azure;
-  border: 1px solid aquamarine;
-  padding: 30px;
-}
-</style>
 <body>
-<div>
-  <h1>Sally Student</h1>
-  <p>I'm an aspiring full stack web developer. I love cats, coding, and crocheting</p>
-
-  <h2>Skills</h2>
-  <ul>
-    <li>HTML</li>
-    <li>CSS</li>
-    <li>JavaScript</li>
-    <li>jQuery</li>
-  </ul>
-
-  <h2>Contact Info</h2>
-  <p>Twitter: <a href="https://twitter.com/sallyStudent">@sallyStudent</a></p>
+   <div class="container">
+  
+    <div class="box" id="orderListTitle" style="display:none;">
+    <h2 >قائمة طلبك</h2>
+    <table id="orderTable" border="1">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- سيتم إضافة الطلبات هنا -->        
+        
+        </tbody>
+    </table>
+    <div class="twoButton">
+    <button id="cancelAllOrdersBtn" onclick="cancelAllOrders()">إلغاء الطلب</button>
+    <button onclick="sendOrderViaWhatsApp()">إرسال الطلب عبر واتساب</button>
+    </div>
+    
+    </div>
+    
+     <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search for products..." onkeyup="searchProducts()" />
+    <button class="search-button" onclick="searchProducts()">🔍</button>
 </div>
+
+    <div class="box">
+    <h2>الاصناف المتوفرة</h2>
+    
+    <table id="productTable" border="1">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Product Name</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- سيتم إضافة المنتجات هنا -->          
+        </tbody>
+    </table>
+
+</div>
+    <!-- واجهة الطلب المنبثقة -->
+    <div id="orderModal" class="orderModal">
+        <h3>Order Product</h3>
+        <p id="modalProductName"></p>
+        <p id="modalProductDate"></p>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" value="1" min="1">
+        <br><br>
+        <div class="twoButton">
+            <button onclick="addToOrder()">Add</button>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+    <div id="overlay" class="overlay" onclick="closeModal()"></div>
+
+    <!-- script  -->  
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+    <script type="text/javascript" src="pageOne.js"></script>
+    
+    </div>
 </body>
 </html>
-
