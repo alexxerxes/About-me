@@ -1,36 +1,51 @@
-    // تحميل مكتبة Google Charts
-        google.charts.load('current', { packages: ['table'] });
-        google.charts.setOnLoadCallback(drawProductTable);
+ 
 
-        // استدعاء بيانات المنتجات
-        function drawProductTable() {
-            var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1M7WLnM9Dgbz-fzpoJmbW3DSC9Z-apul8qMD0mJjmB1U/gviz/tq?sheet=Sheet1');
-            query.send(handleProductQueryResponse);
+google.charts.load('current', { packages: ['table'] });
+google.charts.setOnLoadCallback(drawProductTable);
+
+function drawProductTable() {
+    var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1M7WLnM9Dgbz-fzpoJmbW3DSC9Z-apul8qMD0mJjmB1U/gviz/tq?sheet=Sheet1');
+    query.send(handleProductQueryResponse);
+}
+
+function handleProductQueryResponse(response) {
+    if (response.isError()) {
+        console.error('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+        return;
+    }
+
+    var data = response.getDataTable();
+    var rows = [];
+
+    // إنشاء الصفوف
+    for (var i = 0; i < data.getNumberOfRows(); i++) {
+        var row = [];
+        for (var j = 0; j < 4; j++) {
+            row.push(data.getValue(i, j));
         }
+        // إضافة زر الطلب
+        row.push("<button class='order-button' onclick='openOrderModal(this)'>طلب</button>");
+        rows.push(row);
+    }
 
-        // معالجة استجابة الاستعلام
-        function handleProductQueryResponse(response) {
-            if (response.isError()) {
-                console.error('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
-                return;
+    // تهيئة DataTables
+    $(document).ready(function () {
+        $('#productTable').DataTable({
+            data: rows,
+            columns: [
+                { title: "Ex" },
+                { title: "الصنف" },
+                { title: "السعر" },
+                { title: "الكمية" },
+                { title: "طلب", orderable: false }
+            ],
+            language: {
+                url: "https://cdn.datatables.net/plug-ins/1.13.6/i18n/ar.json"
             }
-            var data = response.getDataTable();
-            var productTable = document.getElementById('productTable');
+        });
+    });
+}
 
-            // إضافة الصفوف إلى الجدول
-            for (var i = 0; i < data.getNumberOfRows(); i++) {
-                var row = productTable.insertRow();
-                
-                for (var j = 0; j < 4; j++) {
-                    var cell = row.insertCell(j);
-                    cell.innerHTML = data.getValue(i, j);
-                }
-                // إضافة زر الطلب في عمود جديد
-                var actionCell = row.insertCell(4);
-                actionCell.innerHTML = "<button class='order-button' onclick='openOrderModal(this)'>Order</button>";
-
-            }
-        }
 
         // فتح نافذة الطلب
         function openOrderModal(button) {
@@ -123,12 +138,40 @@ const nameCell = newRow.insertCell(1);
 dateCell.innerText = order.date;
 nameCell.innerText = order.name;
 quantityCell.innerText = order.quantity;
-priceCell.innerText = order.price.toFixed(2);
-            totalCell.innerText = order.totalPrice.toFixed(2);
+if (order.price === null || order.price === undefined || order.price === "" || isNaN(order.price)) {
+    priceCell.innerText = 0;  // أو أي قيمة افتراضية
+} else {
+    priceCell.innerText = order.price.toFixed(0);
+}
+
+
+//priceCell.innerText = order.price.toFixed(2);
+       if (order.totalPrice === null || order.price === undefined || order.price === "" || isNaN(order.price)) {
+    totalCell.innerText = 0;  // أو أي قيمة افتراضية
+} else {
+    totalCell.innerText = order.totalPrice.toFixed(0);
+}
+  
+          // totalCell.innerText = order.totalPrice.toFixed(2);
             actionCell.innerHTML = "<button class='order-button-red' onclick='cancelOrder(this)'>×</button>";
             
             updateTotal();
         }
+
+
+// الدالة لزيادة الكمية
+    function increment() {
+        let quantityInput = document.getElementById("quantity");
+        quantityInput.value = parseInt(quantityInput.value) + 1;
+    }
+
+    // الدالة لنقص الكمية
+    function decrement() {
+        let quantityInput = document.getElementById("quantity");
+        if (quantityInput.value > 1) {
+            quantityInput.value = parseInt(quantityInput.value) - 1;
+        }
+    }
 
 // تحديث الجدول إذا تم تعديل الكمية
 function updateOrderTable(orders) {
@@ -223,6 +266,8 @@ function cancelAllOrders() {
     // اخفاء جدول الطلبات 
     document.getElementById('orderListTitle').style.display = 'none';
     
+     /* عدد الطلبات في السلة */   document.getElementById('cart-count').textContent = orderTable.rows.length;
+ 
 }
 
 
@@ -265,6 +310,10 @@ function updateTotal() {
             totalAmountCell.innerText = totalSum.toFixed(2);
         }
     }
+    
+    
+ /* عدد الطلبات في السلة */   document.getElementById('cart-count').textContent = rows.length-1;
+    
 }
 
 // ارسال الطلبات عبر الواتس
@@ -296,3 +345,11 @@ function sendOrderViaWhatsApp() {
     window.open(whatsappLink, '_blank');
    }
   
+
+
+/* عند الضغط على السلة يمرر الى جدول الطلبات*/
+document.getElementById('cartButton').addEventListener('click', function() {
+    const orderTable = document.getElementById('orderTable');
+    orderTable.scrollIntoView({ behavior: 'smooth' });
+});
+
