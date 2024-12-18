@@ -1,9 +1,16 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
             font-family: 'Arial', sans-serif; /* تغيير الخط إلى Arial */
             background-color: #f9f9f9;
             margin: 0;
             padding: 20px;
             color: #333;
+            text-align: right;
+                min-height: 150vh; /* تأكد من أن الصفحة تحتاج إلى التمرير */
+                
         }
         .container {
             max-width: 100%;
@@ -28,7 +35,8 @@ body {
             border-top-right-radius: 8px;
             overflow: hidden; 
             
-    border-radius: 8px;
+    border-radius: 2px;
+    text-align: right;
         }
         th, td {
             padding: 10px 12px;
@@ -41,12 +49,12 @@ body {
     color:#4caf50;
 }
         .box:nth-child(1) th {
-    background-color: #4caf50; /* أخضر فاتح */
+    background-color: #388E3C; /* أخضر داكن */
 }
 
 /* سلة الطلبات */
 .box:nth-child(2) th {
-    background-color: #2196f3; /* أزرق سماوي */
+    background-color: #007BFF; /* أزرق سماوي */
 }
         th {
             background-color: #2196f3;
@@ -106,7 +114,7 @@ body {
     background: linear-gradient(45deg, #f44336, #e57373); /* تدرج أحمر */
     color: white;
     border: none;
-    padding: 5px 7px;
+    padding: 5px 8px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
@@ -131,7 +139,7 @@ body {
 }
 
 .orderModal h3 {
-    color: #4caf50; /* لون العنوان */
+    color: #388E3C; /* لون العنوان */
     margin-bottom: 15px; /* مسافة سفلية */
     text-align: center; /* محاذاة المركز */
 }
@@ -146,7 +154,7 @@ body {
     margin-bottom: 5px; /* مسافة سفلية */
     display: block; /* يجعل التسمية تأخذ سطرًا كاملًا */
 }
-
+/*  
 .orderModal input[type="number"] {
     width: calc(100% - 10px); /* عرض كامل مع حافة */
     padding: 8px; /* حشو داخلي */
@@ -154,8 +162,15 @@ body {
     border-radius: 4px; /* حواف ناعمة */
     margin-bottom: 15px; /* مسافة سفلية */
 }
-
-.orderModal button {
+ */
+ .twoButton {
+        display: flex;
+        justify-content: space-between; /* تباعد بين الأزرار */
+        padding:10px; /* مسافة بين الجدول والأزرار */
+        gap: 0px;
+    }
+    
+.twoButton button {
     background-color: #4caf50; /* لون زر الإضافة */
     color: white; /* لون نص الزر */
     border: none; /* إزالة الحدود */
@@ -166,21 +181,21 @@ body {
     width: 48%; /* عرض الزر */
 }
 
-.orderModal button:hover {
+.twoButton button:hover {
     background-color: #66bb6a; /* لون زر الإضافة عند المرور */
     transform: translateY(-2px); /* تحريك خفيف لأعلى عند المرور */
 }
 
-.orderModal button:last-child {
+.twoButton button:last-child {
     background-color: #f44336; /* لون زر الإغلاق */
 }
 
-.orderModal button:last-child:hover {
+.twoButton button:last-child:hover {
     background-color: #e57373; /* لون زر الإغلاق عند المرور */
 }.search-container {
     display: flex; /* يجعل العناصر داخل الحاوية تتجاور */
     align-items: center; /* محاذاة عمودية للمحتوى */
-    margin-bottom: 20px; /* مسافة سفلية */
+    padding-bottom: 20px; /* مسافة سفلية */
     max-width: 400px; /* عرض أقصى لخانة البحث */
     margin: auto; /* مركز الخانة */
 }
@@ -228,17 +243,169 @@ body {
             display: block;
         }
         
-        #cancelAllOrdersBtn {
+    
+ 
+  
+
+    #cancelAllOrdersBtn {
+      background-color: #e53935; /* لون أحمر لإلغاء الطلب */
+      color: white;
+      font-size: 12px; /* حجم صغير */
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #cancelAllOrdersBtn:hover {
+      background-color: #d32f2f; /* لون أحمر داكن عند التمرير */
+    }
+
+    #sendOrderBtn {
+      background-color: #43a047; /* لون أخضر لإرسال الطلب */
+      color: white;
+      font-size: 12px; /* حجم صغير */
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #sendOrderBtn:hover {
+      background-color: #388e3c; /* لون أخضر داكن عند التمرير */
+    }
+
+
+/* nav */
+/* ثابتة على الجانب الأيمن */
+/* ثابتة على الجانب الأيمن */
+.cart-nav {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 8px;
     border-radius: 5px;
-    background-color: #f44336; /* أحمر */
+    z-index: 1000;
+    opacity: 0.8; /* شفافية */
+}
+
+.cart-icon {
+    display: flex;
+    align-items: center;
+    font-size: 18px; /* تصغير حجم الأيقونة */
+}
+
+#cart-count {
+    background-color: red;
     color: white;
-    padding: 8px 12px;
-    cursor: pointer;
+    border-radius: 50%;
+    padding: 0 6px;
+    margin-left: 8px;
+    font-size: 14px; /* تصغير حجم الرقم */
 }
 
 
-.twoButton{
-    display: flex; 
-    justify-content: space-between;
+
+#cartButton{
+ //   display: inline-block;
+   border:none;
+   background: none;
+    text-decoration: none;
+  //  border-radius: 5px;
 }
-          
+
+/* end nav -------- */
+
+/* تنسيق الحاوية الأساسية */
+        .quantity-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+        }
+
+  /* زر الزيادة والنقصان */
+        .quantity-btn {
+        margin-left:-4px;
+            margin-right:-4px;
+            width: 30px;
+            height: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            z-index: 1;
+            cursor: pointer;
+            border-radius: 8px;
+            display: flex; /* استخدام flex لتوسيع الزر */
+            align-items: center; /* توسيط محتوى الزر عموديًا */
+            justify-content: center; /* توسيط محتوى الزر أفقيًا */
+        }
+
+        /* حقل إدخال الكمية */
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            font-size: 16px;
+            border-top: 1px solid #ccc; /* إبقاء الإطار العلوي */ border-bottom: 1px solid #ccc; /* إبقاء الإطار السفلي */ border-left: none; /* حذف الإطار من اليسار */ border-right: none; /* حذف الإطار من اليمين */ 
+            height: 25px;
+            outline: none;
+            }
+            
+            
+            
+       /* تنسيق نافذة الأخطاء */
+       /* تنسيق الخلفية عند فتح النافذة */
+        .modal {
+            display: none; /* مخفية بشكل افتراضي */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* خلفية شفافة */
+            justify-content: center;
+            align-items: center;
+        }
+        /* تنسيق محتوى النافذة */
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        /* زر الإغلاق */
+        .close {
+            cursor: pointer;
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+/* search datatables */
+/* تخصيص الحاوية العامة */
+    .dataTables_filter {
+        margin-bottom: 20px; /* إضافة مسافة أسفل خانة البحث */
+        text-align: center; /* محاذاة البحث للوسط */
+    }
+
+    /* تخصيص المدخل (input) */
+    .dataTables_filter input {
+        width: 300px; /* عرض خانة البحث */
+        padding: 10px; /* مسافة داخلية */
+        border: 1px solid #ccc; /* حواف رمادية */
+        border-radius: 5px; /* زوايا مستديرة */
+        font-size: 16px; /* حجم النص */
+    }
