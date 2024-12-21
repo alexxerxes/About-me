@@ -300,7 +300,7 @@ function updateTotal() {
         
         const totalLabelCell = document.createElement('td');
         totalLabelCell.colSpan = 4; // دمج 4 خلايا لتكون صف الإجمالي
-        totalLabelCell.innerText = 'الإجمالي:toFixed';
+        totalLabelCell.innerText = 'الإجمالي:';
         totalRow.appendChild(totalLabelCell);
 
         const totalAmountCell = document.createElement('td');
@@ -331,11 +331,19 @@ function sendOrderViaWhatsApp() {
         return;
     }
 
-    let message = 'تفاصيل الطلب:\n';
-    orders.forEach(order => {
-        // message += `المنتج: ${order.name}, الكمية: ${order.quantity}, السعر: ${order.price.toFixed(2)}, الإجمالي: ${order.totalPrice.toFixed(2)}\n`;
-        message += `المنتج: ${order.name}, الكمية: ${order.quantity}, السعر: ${(order.price !== null && order.price !== undefined) ? order.price.toFixed(2) : 'N/A'}, الإجمالي: ${(order.totalPrice !== null && order.totalPrice !== undefined) ? order.totalPrice.toFixed(2) : 'N/A'}\n`;
+    // let message = 'تفاصيل الطلب:\n';
+    // orders.forEach(order => {
+    //     // message += `المنتج: ${order.name}, الكمية: ${order.quantity}, السعر: ${order.price.toFixed(2)}, الإجمالي: ${order.totalPrice.toFixed(2)}\n`;
+    //     message += `المنتج: ${order.name}, الكمية: ${order.quantity}, السعر: ${(order.price !== null && order.price !== undefined) ? order.price.toFixed(2) : 'N/A'}, الإجمالي: ${(order.totalPrice !== null && order.totalPrice !== undefined) ? order.totalPrice.toFixed(2) : 'N/A'}\n`;
 
+    // });
+     let message = 'الاسم      | الكمية | السعر  | الإجمالي \n';
+    message += '--------------------------------------------\n';
+
+    orders.forEach(order => {
+        let price = parseFloat(order.price).toString(); // حذف الأصفار غير الضرورية
+        let totalPrice = parseFloat(order.totalPrice).toString(); // حذف الأصفار غير الضرورية
+        message += `${order.name.padEnd(10)} | ${order.quantity.toString().padEnd(6)} | ${price.padEnd(7)} | ${totalPrice.padEnd(7)}\n`;
     });
 
     // حساب الإجمالي النهائي
