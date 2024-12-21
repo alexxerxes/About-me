@@ -300,7 +300,7 @@ function updateTotal() {
         
         const totalLabelCell = document.createElement('td');
         totalLabelCell.colSpan = 4; // دمج 4 خلايا لتكون صف الإجمالي
-        totalLabelCell.innerText = 'الإجمالي:';
+        totalLabelCell.innerText = 'الإجمالي:toFixed';
         totalRow.appendChild(totalLabelCell);
 
         const totalAmountCell = document.createElement('td');
@@ -333,7 +333,9 @@ function sendOrderViaWhatsApp() {
 
     let message = 'تفاصيل الطلب:\n';
     orders.forEach(order => {
-        message += `المنتج: ${order.name}, الكمية: ${order.quantity}, السعر: ${order.price.toFixed(2)}, الإجمالي: ${order.totalPrice.toFixed(2)}\n`;
+        // message += `المنتج: ${order.name}, الكمية: ${order.quantity}, السعر: ${order.price.toFixed(2)}, الإجمالي: ${order.totalPrice.toFixed(2)}\n`;
+        message += `المنتج: ${order.name}, الكمية: ${order.quantity}, السعر: ${(order.price !== null && order.price !== undefined) ? order.price.toFixed(2) : 'N/A'}, الإجمالي: ${(order.totalPrice !== null && order.totalPrice !== undefined) ? order.totalPrice.toFixed(2) : 'N/A'}\n`;
+
     });
 
     // حساب الإجمالي النهائي
