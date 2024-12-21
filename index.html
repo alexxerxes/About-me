@@ -47,8 +47,8 @@
         </tbody>
     </table>
     <div class="twoButton">
-        <button id="sendOrderBtn" onclick="sendOrderViaWhatsApp()">إرسال الطلب عبر واتساب</button>
-    <button id="cancelAllOrdersBtn" onclick="cancelAllOrders()">إلغاء الطلب</button>
+        <button class="btn btn-green" id="sendOrderBtn" onclick="sendOrderViaWhatsApp()">إرسال الطلب عبر واتساب</button>
+    <button class="btn btn-red" id="cancelAllOrdersBtn" onclick="cancelAllOrders()">إلغاء الطلب</button>
     </div>
     
     </div>
@@ -56,11 +56,6 @@
     
     <div class="box">
     <h2>الاصناف المتوفرة</h2>
-    
-     <div class="search-container">
-    <input type="text" id="searchInput" placeholder="البحث عن المنتجات..." onkeyup="searchProducts()" />
-    <button class="search-button" onclick="searchProducts()">🔍</button>
-</div>
     
     
     <table id="productTable" border="1">
@@ -79,9 +74,6 @@
     </table>
     
         
-    <!-- هذا العنصر سيتم مراقبته بواسطة IntersectionObserver -->
-<div id="loading">جاري تحميل المزيد...</div>
-
 </div>
     <!-- واجهة الطلب المنبثقة -->
     <div id="orderModal" class="orderModal">
@@ -103,8 +95,8 @@
         
         <br><br>
         <div class="twoButton">
-            <button onclick="addToOrder()">اضافة +</button>
-            <button onclick="closeModal()">إلغاء ×</button>
+            <button class="btn btn-green" onclick="addToOrder()">اضافة +</button>
+            <button class="btn btn-red" onclick="closeModal()">إلغاء ×</button>
         </div>
     </div>
     <div id="overlay" class="overlay" onclick="closeModal()"></div>

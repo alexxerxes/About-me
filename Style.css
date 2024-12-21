@@ -55,12 +55,15 @@ body {
 /* سلة الطلبات */
 .box:nth-child(2) th {
     background-color: #007BFF; /* أزرق سماوي */
+    text-align: center;
+
 }
         th {
             background-color: #2196f3;
             color: white;
             font-weight: 500;
             font-size: 18px;
+            text-align: center;
         }
         tr:hover {
             background-color: #e8eaf6;
@@ -154,80 +157,56 @@ body {
     margin-bottom: 5px; /* مسافة سفلية */
     display: block; /* يجعل التسمية تأخذ سطرًا كاملًا */
 }
-/*  
-.orderModal input[type="number"] {
-    width: calc(100% - 10px); /* عرض كامل مع حافة */
-    padding: 8px; /* حشو داخلي */
-    border: 1px solid #ccc; /* حدود خفيفة */
-    border-radius: 4px; /* حواف ناعمة */
-    margin-bottom: 15px; /* مسافة سفلية */
-}
- */
+
  .twoButton {
-        display: flex;
-        justify-content: space-between; /* تباعد بين الأزرار */
-        padding:10px; /* مسافة بين الجدول والأزرار */
-        gap: 0px;
+    display: flex;
+    justify-content: center;
+    /* مسافة بين الجدول والأزرار */
+    gap: 15px;
+    /* تباعد بين الأزرار */
+    margin-top: 20px;
     }
     
-.twoButton button {
-    background-color: #4caf50; /* لون زر الإضافة */
-    color: white; /* لون نص الزر */
-    border: none; /* إزالة الحدود */
-    padding: 10px 15px; /* حشو داخلي */
-    border-radius: 5px; /* حواف ناعمة */
-    cursor: pointer; /* شكل المؤشر */
-    transition: background-color 0.3s, transform 0.2s; /* تأثيرات انتقال */
-    width: 48%; /* عرض الزر */
-}
+    .twoButton .btn {
+        padding: 10px 20px;
+                font-size: 16px;
+                color: #f5f5f5;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-transform: uppercase;
+    }
+    
+    .btn-green {
+        background-color: #2e7d32; /* لون أخضر داكن */
+    }
+    
+    .btn-green:hover {
+        transform: translateY(-2px);
+        background-color: #1b5e20; /* لون أغمق عند التمرير */
+    }
+    
+    .btn-red {
+        background-color: #b71c1c; /* لون أحمر داكن */
+    }
+    
+    .btn-red:hover {
+        transform: translateY(-2px);
+        background-color: #7f0000; /* لون أغمق عند التمرير */
+    }
+    
+    /* تغيير حجم الازرار عند  */
+    @media (max-width: 600px) {
+        .twoButton {
+            flex-direction: column;
+            gap: 10px; /* مسافة بين الأزرار */
+        }
+    }
+    
 
-.twoButton button:hover {
-    background-color: #66bb6a; /* لون زر الإضافة عند المرور */
-    transform: translateY(-2px); /* تحريك خفيف لأعلى عند المرور */
-}
 
-.twoButton button:last-child {
-    background-color: #f44336; /* لون زر الإغلاق */
-}
 
-.twoButton button:last-child:hover {
-    background-color: #e57373; /* لون زر الإغلاق عند المرور */
-}.search-container {
-    display: flex; /* يجعل العناصر داخل الحاوية تتجاور */
-    align-items: center; /* محاذاة عمودية للمحتوى */
-    padding-bottom: 20px; /* مسافة سفلية */
-    max-width: 400px; /* عرض أقصى لخانة البحث */
-    margin: auto; /* مركز الخانة */
-}
-
-.search-container input[type="text"] {
-    flex: 1; /* يجعل خانة البحث تأخذ كل المساحة المتاحة */
-    padding: 10px 15px; /* حشو داخلي */
-    border: 1px solid #ccc; /* حدود خفيفة */
-    border-radius: 4px; /* حواف ناعمة */
-    font-size: 16px; /* حجم خط النص */
-    transition: border-color 0.3s; /* تأثيرات انتقالية */
-}
-
-.search-container input[type="text"]:focus {
-    border-color: #4caf50; /* تغيير لون الحدود عند التركيز */
-    outline: none; /* إزالة حدود التركيز الافتراضية */
-}
-
-.search-button {
-    background-color: #4caf50; /* لون زر البحث */
-    color: white; /* لون نص الزر */
-    border: none; /* إزالة الحدود */
-    padding: 10px 15px; /* حشو داخلي */
-    border-radius: 4px; /* حواف ناعمة */
-    cursor: pointer; /* شكل المؤشر */
-    margin-left: 10px; /* مسافة بين الزر وخانة البحث */
-    transition: background-color 0.3s; /* تأثيرات انتقالية */
-}
-
-.search-button:hover {
-    background-color: #66bb6a; /* لون الزر عند المرور */
-}
 
         .overlay {
             display: none;
@@ -262,20 +241,6 @@ body {
       background-color: #d32f2f; /* لون أحمر داكن عند التمرير */
     }
 
-    #sendOrderBtn {
-      background-color: #43a047; /* لون أخضر لإرسال الطلب */
-      color: white;
-      font-size: 12px; /* حجم صغير */
-      padding: 5px 10px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    #sendOrderBtn:hover {
-      background-color: #388e3c; /* لون أخضر داكن عند التمرير */
-    }
 
 
 /* nav */
@@ -397,14 +362,15 @@ body {
 /* search datatables */
 /* تخصيص الحاوية العامة */
     .dataTables_filter {
-        margin-bottom: 20px; /* إضافة مسافة أسفل خانة البحث */
+        width: -webkit-fill-available; 
+        margin: 0px 20px 20px 20px;
         text-align: center; /* محاذاة البحث للوسط */
     }
 
     /* تخصيص المدخل (input) */
     .dataTables_filter input {
-        width: 300px; /* عرض خانة البحث */
-        padding: 10px; /* مسافة داخلية */
+        width: 100%; /* عرض خانة البحث */
+        padding: 10px !important; /* مسافة داخلية */
         border: 1px solid #ccc; /* حواف رمادية */
         border-radius: 5px; /* زوايا مستديرة */
         font-size: 16px; /* حجم النص */

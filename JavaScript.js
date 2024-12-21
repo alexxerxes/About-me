@@ -66,6 +66,7 @@ function handleProductQueryResponse(response) {
     $(document).ready(function () {
         $('#productTable').DataTable({
             data: rows,
+            "pageLength": 50,
             columns: [
                 { title: "Ex" },
                 { title: "الصنف" },
@@ -256,36 +257,7 @@ function updateOrderTable(orders) {
             }
         }
         
-        // البحث في المنتجات
-        
- function searchProducts() {
-    const input = document.getElementById('searchInput');
-    const filter = input.value.toLowerCase();
-    const table = document.getElementById('productTable');
-    const rows = table.getElementsByTagName('tr');
-
-    for (let i = 1; i < rows.length; i++) { // ابدأ من 1 لتخطي رأس الجدول
-        const cells = rows[i].getElementsByTagName('td');
-        let found = false;
-
-        // تحقق في كل خلية في الصف
-        for (let j = 0; j < cells.length; j++) {
-            const cell = cells[j];
-            if (cell) {
-                const txtValue = cell.textContent || cell.innerText;
-                if (txtValue.toLowerCase().indexOf(filter) > -1) {
-                    found = true;
-                    break;
-                }
-            }
-        }
-
-        // إظهار أو إخفاء الصف بناءً على النتيجة
-        rows[i].style.display = found ? "" : "none";
-    }
-}           
-
-
+      
 function cancelAllOrders() {
     const orderTable = document.getElementById('orderTable').getElementsByTagName('tbody')[0];
     
@@ -328,7 +300,7 @@ function updateTotal() {
         
         const totalLabelCell = document.createElement('td');
         totalLabelCell.colSpan = 4; // دمج 4 خلايا لتكون صف الإجمالي
-        totalLabelCell.innerText = 'Total';
+        totalLabelCell.innerText = 'الإجمالي:';
         totalRow.appendChild(totalLabelCell);
 
         const totalAmountCell = document.createElement('td');
