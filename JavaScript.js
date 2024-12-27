@@ -1,38 +1,4 @@
- /* 
-    // تحميل مكتبة Google Charts
-        google.charts.load('current', { packages: ['table'] });
-        google.charts.setOnLoadCallback(drawProductTable);
 
-        // استدعاء بيانات المنتجات
-        function drawProductTable() {
-            var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1M7WLnM9Dgbz-fzpoJmbW3DSC9Z-apul8qMD0mJjmB1U/gviz/tq?sheet=Sheet1');
-            query.send(handleProductQueryResponse);
-        }
-
-        // معالجة استجابة الاستعلام
-        function handleProductQueryResponse(response) {
-            if (response.isError()) {
-                console.error('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
-                return;
-            }
-            var data = response.getDataTable();
-            var productTable = document.getElementById('productTable');
-
-            // إضافة الصفوف إلى الجدول
-            for (var i = 0; i < data.getNumberOfRows(); i++) {
-                var row = productTable.insertRow();
-                
-                for (var j = 0; j < 4; j++) {
-                    var cell = row.insertCell(j);
-                    cell.innerHTML = data.getValue(i, j);
-                }
-                // إضافة زر الطلب في عمود جديد
-                var actionCell = row.insertCell(4);
-                actionCell.innerHTML = "<button class='order-button' onclick='openOrderModal(this)'>Order</button>";
-
-            }
-        }
-         */
 
 google.charts.load('current', { packages: ['table'] });
 google.charts.setOnLoadCallback(drawProductTable);
@@ -54,7 +20,7 @@ function handleProductQueryResponse(response) {
     // إنشاء الصفوف
     for (var i = 0; i < data.getNumberOfRows(); i++) {
         var row = [];
-        for (var j = 0; j < 4; j++) {
+        for (var j = 1; j < 5; j++) {
             row.push(data.getValue(i, j));
         }
         // إضافة زر الطلب
@@ -70,8 +36,8 @@ function handleProductQueryResponse(response) {
             columns: [
                 { title: "Ex" },
                 { title: "الصنف" },
-                { title: "السعر" },
                 { title: "الكمية" },
+                { title: "السعر" },
                 { title: "طلب", orderable: false }
             ],
             language: {
