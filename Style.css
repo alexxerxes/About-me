@@ -3,10 +3,10 @@ html {
 }
 
 body {
-            font-family: 'Arial', sans-serif; /* تغيير الخط إلى Arial */
+            font-family: "Tajawal", sans-serif !important;
             background-color: #f9f9f9;
             margin: 0;
-            padding: 0px 20px;
+            /* padding: 0px 20px; */
             color: #333;
             text-align: right;
                 min-height: 150vh; /* تأكد من أن الصفحة تحتاج إلى التمرير */
@@ -28,7 +28,7 @@ body {
         .container {
             max-width: 100%;
             margin: auto;
-            padding: 0px;
+            padding: 0px 20px;
             
         }
         .box {
