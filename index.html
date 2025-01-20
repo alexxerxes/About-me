@@ -23,17 +23,62 @@
 </script>
 
     <link href="Style.css" rel="stylesheet" />
+
+    <style>
+              /* تنسيق العنوان */
+.name {
+    color: blue; /* لون أزرق */
+    text-align: center; /* توسيط النص */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* ظل خفيف */
+    font-size: 2.5rem; /* حجم الخط */
+    margin: 0 auto; /* ضبط الهوامش */
+    width: fit-content; /* جعل العرض بطول النص */
+}
+
+/* تنسيق الوصف */
+.description {
+    background-color: rgba(255, 255, 255, 0.8); /* خلفية بيضاء شبه شفافة */
+    color: blue; /* لون النص أزرق */
+    padding: 10px 20px; /* مسافة داخلية حول النص */
+    margin: 10px auto; /* ضبط المسافات الخارجية */
+    width: fit-content; /* جعل العرض بطول النص */
+    text-align: center; /* توسيط النص */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* ظل خفيف للصندوق */
+    border-radius: 8px; /* زوايا مستديرة للصندوق */
+    font-size: 1.2rem; /* حجم الخط */
+}
+.alert {
+    background-color:  #ffdddd; /* خلفية زرقاء فاتحة أو رمادي فاتح */
+    color: #cc0000; /* نص أزرق داكن */
+    padding: 8px 15px;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px; /* زوايا دائرية ناعمة */
+    width: auto; /* العرض تلقائي */
+    position: absolute;
+    top: 20px;
+    left: 20px; /* وضع التنبيه في الركن العلوي الأيمن */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+}
+    </style>
 </head>
 <body>
     
-    <nav class="cart-nav">
+    <div class="header">
+        <div class="alert">لصيدليات فقط</div>  <!-- التنبيه هنا -->
+        <h1 class="name">ال ....</h1>
+        <h3 class="description">للأدوية و المستلزمات الطبية</h3>
+    </div>
+    
+    <div class="cart-nav">
         <button id="cartButton">
         <div class="cart-icon">
             🛒
             <span id="cart-count">0</span>
         </div>
         </button>
-    </nav>
+    </div>
     
    <div class="container">
        
