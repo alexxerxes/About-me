@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="محلات ....  لبيع الأدوية بالجملة للصيدليات">
+
     <title>Product Table from Google Sheets</title>
     <!--   <link  href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="preload">
       -->
@@ -72,7 +74,7 @@
             /* خلفية زرقاء فاتحة أو رمادي فاتح */
             color: #cc0000;
             /* نص أزرق داكن */
-            padding: 8px 15px;
+            padding: 7px 14px;
             font-size: 1rem;
             text-align: center;
             font-weight: bold;
@@ -81,10 +83,14 @@
             width: auto;
             /* العرض تلقائي */
             position: absolute;
-            top: 20px;
+            top: 25px;
             left: 20px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             /* ظل خفيف */
+        }
+
+        .header{
+            margin-top: 10px;
         }
       
         /* تنسيق معلومات المتجر */
@@ -111,9 +117,10 @@ footer p {
 <body>
 
     <div class="header">
-        <div class="alert">لصيدليات فقط</div> <!-- التنبيه هنا -->
         <h1 class="name">ال ....</h1>
         <h3 class="description">للأدوية و المستلزمات الطبية</h3>
+        <div class="alert">لصيدليات فقط</div> <!-- التنبيه هنا -->
+
     </div>
 
     <div class="cart-nav">
@@ -138,7 +145,7 @@ footer p {
                         <th>الكمية</th>
                         <th>السعر</th>
                         <th>الأجمالي</th>
-                        <th>لإلغاء</th>
+                        <th>إلغاء</th>
                     </tr>
                 </thead>
                 <tbody>
